@@ -20,7 +20,7 @@ void	check_link(t_lem *lem, char *line)
 	fl = 0;
 	tmp_node = lem->node;
 	if (ft_num_words(line, ' ') != 1)
-		error("error\n");
+		error("1error\n");
 	check_old_link(lem, line);
 	while (tmp_node)
 	{
@@ -28,7 +28,7 @@ void	check_link(t_lem *lem, char *line)
 			ft_strlen(tmp_node->room->name)) == 0 &&
 			ft_strcmp(line + ft_strlen(tmp_node->room->name)
 							+ 1, tmp_node->room->name) == 0)
-			error("error\n");
+			error("2error\n");
 		else if (ft_strncmp(line, tmp_node->room->name,
 			(ft_strchr(line, '-') - line)) == 0 ||
 			ft_strcmp(ft_strchr(line, '-') + 1, tmp_node->room->name) == 0)
@@ -36,7 +36,10 @@ void	check_link(t_lem *lem, char *line)
 		tmp_node = tmp_node->next;
 	}
 	if (fl != 2)
-		error("error\n");
+	{
+		printf("%s\n", line);
+		error("3error\n");
+	}
 }
 
 int		check_room(char *line)
